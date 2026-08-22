@@ -11,7 +11,7 @@ One tree = one binary. Choose the kind at build time:
 | Kind         | `PROJECT_KIND` | Packer             | SD path                |
 | ------------ | -------------- | ------------------ | ---------------------- |
 | Dynamic core | `core` (default) | `pack_core.py`   | `/cores/*.bin`         |
-| Homebrew     | `homebrew`     | `pack_homebrew.py` | `/roms/homebrew/*.bin` |
+| Homebrew     | `homebrew`     | `pack_homebrew.py` | `/homebrews/*.bin` |
 
 
 Read `README.md` for build/pack basics. Read `sdk/ld/core_ram_emu.ld` for
