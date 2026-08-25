@@ -29,6 +29,7 @@
 #include "gw_audio.h"
 #include "rom_manager.h"
 #include "odroid_system.h"
+#include "appid.h"
 #include "odroid_overlay.h"
 #include "odroid_settings.h"
 #include "gw_malloc.h"
@@ -42,10 +43,9 @@
 #endif
 
 #if defined(PROJECT_KIND_HOMEBREW)
-/* Matches firmware APPID_HOMEBREW — keeps savestate paths under homebrew. */
-#define APP_ID  14
+#define APP_ID  APPID_HOMEBREW
 #elif defined(PROJECT_KIND_CORE)
-#define APP_ID  100
+#define APP_ID  APPID_CORE
 #else
 #error "Build with PROJECT_KIND=core or PROJECT_KIND=homebrew"
 #endif

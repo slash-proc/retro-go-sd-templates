@@ -246,8 +246,15 @@ If you maintain this tree alongside a firmware checkout:
 ./scripts/sync_from_firmware.sh /path/to/game-and-watch-retro-go-sd
 ```
 
-That re-copies headers (including `gwhb.h`), bridge sources, linker scripts,
-`pack_core.py`, and `pack_homebrew.py`. Review the diff before committing.
+That re-copies headers (including `appid.h`, `gwhb.h`), bridge sources,
+linker scripts, `pack_core.py`, and `pack_homebrew.py`. Review the diff
+before committing.
+
+From the firmware repo you can run the same sync in the other direction:
+
+```bash
+./scripts/sync_to_core_template.sh [/path/to/retro-go-sd-templates]
+```
 
 ## License
 

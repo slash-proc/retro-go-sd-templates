@@ -43,7 +43,8 @@ SD /homebrews/<name>.bin      (GWHB)     → Homebrew tab → run_gwhb_homebrew(
   `#include "gw_core_bridge.h"` **last** (macros rewrite `ACTIVE_FILE` /
    `common_emu_state`).
 4. Wire `odroid_system_init` + `odroid_system_emu_init` (save/load/screenshot
-  hooks as needed).
+   hooks as needed). Pass `APPID_CORE` or `APPID_HOMEBREW` from
+   `Core/Inc/retro-go/appid.h` (synced with the firmware — not a per-system id).
 5. Frame loop pattern (see `src/main.c`):
   - `wdog_refresh()` regularly (WWDG is ~hundreds of ms — a slow frame or
    a large memset without kicks soft-resets with no useful log).
