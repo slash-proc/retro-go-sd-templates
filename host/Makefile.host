@@ -56,7 +56,6 @@ HOST_INCLUDES := \
 	-I$(HOST_INC_ROOT)/Core/Inc/porting \
 	-I$(HOST_INC_ROOT)/Core/Src/porting/lib \
 	-I$(HOST_INC_ROOT)/Core/Src/porting/lib/FatFs \
-	-I$(HOST_INC_ROOT)/retro-go-stm32/components/odroid \
 	$(HOST_PKG_CFLAGS)
 
 HOST_CFLAGS := -O2 -g -Wall -Wextra -std=c11 \

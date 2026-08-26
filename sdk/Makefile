@@ -86,7 +86,6 @@ CORE_COMMON_C_INCLUDES := \
 -I$(INC_ROOT)/Core/Inc/porting \
 -I$(INC_ROOT)/Core/Src/porting/lib \
 -I$(INC_ROOT)/Core/Src/porting/lib/FatFs \
--I$(INC_ROOT)/retro-go-stm32/components/odroid \
 -I$(INC_ROOT)/Drivers/STM32H7xx_HAL_Driver/Inc \
 -I$(INC_ROOT)/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy \
 -I$(INC_ROOT)/Drivers/CMSIS/Device/ST/STM32H7xx/Include \
