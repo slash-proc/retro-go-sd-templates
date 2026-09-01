@@ -64,6 +64,7 @@ HOST_CFLAGS := -O2 -g -Wall -Wextra -std=c11 \
 
 HOST_SRCS := \
 	$(CORE_C_SOURCES) \
+	host/crc32.c \
 	host/host_main.c \
 	host/host_platform.c \
 	host/host_emu.c \
