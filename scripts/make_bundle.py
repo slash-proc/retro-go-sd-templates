@@ -21,11 +21,19 @@ from pathlib import Path
 
 
 def declared_files(manifest: dict) -> list[str]:
-    """Every file the manifest names, in a stable order."""
+    """Every file the manifest names, in a stable order.
+
+    symbols[] included: a bundle is the archival copy of a release, and a crash
+    in a project that has since disappeared is exactly when its symbols matter
+    most. Being in the bundle does not put it on the card -- it is published,
+    not installed.
+    """
     names = []
     for target in manifest["targets"]:
         for artifact in target["artifacts"]:
             names.append(artifact["url"])
+        for sym in target.get("symbols", []):
+            names.append(sym["url"])
     for tool in manifest["tools"]:
         names.append(tool["binary"]["url"])
     return sorted(set(names))
@@ -36,6 +44,8 @@ def expected_sizes(manifest: dict) -> dict[str, tuple[int, str]]:
     for target in manifest["targets"]:
         for artifact in target["artifacts"]:
             sizes[artifact["url"]] = (artifact["bytes"], artifact["sha256"])
+        for sym in target.get("symbols", []):
+            sizes[sym["url"]] = (sym["bytes"], sym["sha256"])
     for tool in manifest["tools"]:
         sizes[tool["binary"]["url"]] = (tool["binary"]["bytes"], tool["binary"]["sha256"])
     return sizes
