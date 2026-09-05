@@ -152,12 +152,17 @@ endif
 all: pack
 
 # Read-only helpers for CI / scripts (make print-PROJECT_KIND, etc.).
-.PHONY: print-PROJECT_KIND print-PACKED_BIN print-CORE_NAME print-DOCKER_IMAGE \
+.PHONY: print-PROJECT_KIND print-PACKED_BIN print-RO_BIN print-CORE_NAME print-DOCKER_IMAGE \
 	print-TARGET_ELF print-TARGET_MAP print-CORE_VERSION
 print-PROJECT_KIND:
 	@echo $(PROJECT_KIND)
 print-PACKED_BIN:
 	@echo $(PACKED_BIN)
+# The shared stage_release.py asks every project for RO_BIN: a second device
+# file installed beside the packed binary, if this project has one. Empty
+# unless you set it.
+print-RO_BIN:
+	@echo $(RO_BIN)
 print-CORE_NAME:
 	@echo $(CORE_NAME)
 print-DOCKER_IMAGE:
