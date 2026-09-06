@@ -176,7 +176,7 @@ cpumon_sleep core_cpumon_sleep
 strncat core_strncat
 sscanf core_sscanf
 odroid_settings_ActiveGameGenieCodes_is_enabled core_odroid_settings_ActiveGameGenieCodes_is_enabled
-# --- v2 append: TGB Dual (Game Boy / Game Boy Color, C++) porting surface ---
+# --- v2 append: palette settings (external GB/GBC and others) ---
 # NOTE: strtok is intentionally NOT here — gw_core_bridge.c defines a real
 # local implementation (static per-core state), same reasoning as
 # memcpy/memset/memmove above. NOTE: GW_GetUnixTM/mktime were dropped —

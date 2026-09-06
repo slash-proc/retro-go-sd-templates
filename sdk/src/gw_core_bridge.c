@@ -919,7 +919,7 @@ int core_sscanf(const char *str, const char *fmt, ...)
 }
 
 /* ====================================================================
- * v2 append: TGB Dual (Game Boy / Game Boy Color, C++) porting surface
+ * v2 append: palette settings (external GB/GBC and others)
  * ==================================================================== */
 int32_t core_odroid_settings_Palette_get(void) { return gw_firmware_abi()->odroid_settings_Palette_get(); }
 void    core_odroid_settings_Palette_set(int32_t value) { gw_firmware_abi()->odroid_settings_Palette_set(value); }
