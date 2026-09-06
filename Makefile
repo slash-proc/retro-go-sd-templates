@@ -71,6 +71,8 @@ CORE_C_DEFS := \
 -DMAX_CHEAT_CODES=13
 
 PACKED_BIN  := $(CORE_NAME).bin
+# Extra device files installed beside PACKED_BIN, space separated. Empty here.
+SIDECARS    ?=
 PAD_LOGO    := src/assets/pad.png
 HEADER_LOGO := src/assets/header.png
 
@@ -152,15 +154,19 @@ endif
 all: pack
 
 # Read-only helpers for CI / scripts (make print-PROJECT_KIND, etc.).
-.PHONY: print-PROJECT_KIND print-PACKED_BIN print-RO_BIN print-CORE_NAME print-DOCKER_IMAGE \
-	print-TARGET_ELF print-TARGET_MAP print-CORE_VERSION
+.PHONY: print-PROJECT_KIND print-PACKED_BIN print-SIDECARS print-RO_BIN print-CORE_NAME \
+	print-DOCKER_IMAGE print-TARGET_ELF print-TARGET_MAP print-CORE_VERSION
 print-PROJECT_KIND:
 	@echo $(PROJECT_KIND)
 print-PACKED_BIN:
 	@echo $(PACKED_BIN)
-# The shared stage_release.py asks every project for RO_BIN: a second device
-# file installed beside the packed binary, if this project has one. Empty
-# unless you set it.
+# Extra device files installed beside the packed binary, space separated.
+# Empty unless this project has any. Zelda 3 ships a .rodata dump, gba an
+# execute-in-place blob, PICO-8 two files.
+print-SIDECARS:
+	@echo $(SIDECARS)
+# The single-slot spelling SIDECARS replaced. Still read when SIDECARS is
+# empty, so a project written against it keeps working.
 print-RO_BIN:
 	@echo $(RO_BIN)
 print-CORE_NAME:
