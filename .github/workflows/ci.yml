@@ -98,9 +98,18 @@ jobs:
           PACKED_BIN="${{ needs.build.outputs.packed_bin }}"
           TARGET_ELF="${{ needs.build.outputs.target_elf }}"
           TARGET_MAP="${{ needs.build.outputs.target_map }}"
+          # Extra device files installed beside the packed binary. Read from
+          # the Makefile so a project with two or ten of them needs no change
+          # here, and staged out of dist/ where the build artifact landed --
+          # stage_release.py resolves a bare name against the repo root.
+          SIDECAR_ARGS=()
+          for sidecar in $(make --no-print-directory print-SIDECARS); do
+            SIDECAR_ARGS+=(--sidecar "dist/${sidecar}")
+          done
           # Artifact download preserves relative paths under dist/.
           python3 scripts/stage_release.py \
             --bin "dist/${PACKED_BIN}" \
+            "${SIDECAR_ARGS[@]}" \
             --elf "dist/${TARGET_ELF}" \
             --map "dist/${TARGET_MAP}" \
             --tag "${GITHUB_REF_NAME}" \
